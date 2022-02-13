@@ -1,6 +1,6 @@
 # site.pp
-
-node 'compute1.uni.local' {
-  include role::webserver
-class { 'tmux:'}
+#  include role::webserver
+node default {
+class { 'tmux':
+}
 }
