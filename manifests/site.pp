@@ -5,7 +5,7 @@
 #}
 #}
 
-node compute1.uni.local {
+node default {
 file { '/etc/motd':
 content => 'My Testing content',
 }
