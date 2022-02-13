@@ -1,5 +1,5 @@
-mod 'puppetlabs/apache' , '1.6.0'
-mod 'puppetlabs/stdlib' , '4.9.0'
+mod 'puppetlabs/apache' , '7.0.0'
+mod 'puppetlabs/stdlib' , '4.13.1'
 mod 'puppetlabs/vcsrepo' , '1.3.1'
-mod 'puppetlabs/concat' , '1.2.4'
+mod 'puppetlabs/concat' , '2.2.1'
 mod 'puppetlabs-mysql', '12.0.1'
