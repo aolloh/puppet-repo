@@ -25,7 +25,7 @@ RSpec.configure do |c|
 end
 
 def is_future_parser_enabled?
-  if default[:type] == 'aio'
+  if default[:type] == 'aio' || ENV['PUPPET_INSTALL_TYPE'] == 'agent'
     return true
   elsif default[:default_apply_opts]
     return default[:default_apply_opts][:parser] == 'future'
@@ -33,9 +33,13 @@ def is_future_parser_enabled?
   return false
 end
 
+def get_puppet_version
+  (on default, puppet('--version')).output.chomp
+end
+
 RSpec.shared_context "with faked facts" do
   let(:facts_d) do
-    puppet_version = (on default, puppet('--version')).output.chomp
+    puppet_version = get_puppet_version
     if fact('osfamily') =~ /windows/i
       if fact('kernelmajversion').to_f < 6.0
         'C:/Documents and Settings/All Users/Application Data/PuppetLabs/facter/facts.d'

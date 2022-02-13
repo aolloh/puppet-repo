@@ -10,12 +10,12 @@
 <%       destination = "#{@logroot}/#{log['file']}" -%>
 <%     end -%>
 <%   elsif log['syslog'] -%>
-<%     destination = "syslog" -%>
+<%     destination = log['syslog'] -%>
 <%   elsif log['pipe'] -%>
 <%     destination = log['pipe'] -%>
 <%   else -%>
-<%     destination ||= "#{@logroot}/#{@name}_access_ssl.log" if @ssl -%>
-<%     destination ||= "#{@logroot}/#{@name}_access.log" -%>
+<%     destination ||= "#{@logroot}/#{@filename}_access_ssl.log" if @ssl -%>
+<%     destination ||= "#{@logroot}/#{@filename}_access.log" -%>
 <%   end -%>
   CustomLog "<%= destination %>" <%= format %> <%= env %>
 <% end -%>

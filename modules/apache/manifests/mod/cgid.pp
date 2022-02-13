@@ -1,8 +1,18 @@
+# @summary
+#   Installs `mod_cgid`.
+# 
+# @see https://httpd.apache.org/docs/current/mod/mod_cgid.html
+#
 class apache::mod::cgid {
+  include apache
   case $::osfamily {
     'FreeBSD': {}
     default: {
-      Class['::apache::mod::worker'] -> Class['::apache::mod::cgid']
+      if defined(Class['::apache::mod::event']) {
+        Class['::apache::mod::event'] -> Class['::apache::mod::cgid']
+      } else {
+        Class['::apache::mod::worker'] -> Class['::apache::mod::cgid']
+      }
     }
   }
 
@@ -13,15 +23,24 @@ class apache::mod::cgid {
     'freebsd' => 'cgisock',
     default   => undef,
   }
-  ::apache::mod { 'cgid': }
+
+  if $::osfamily == 'Suse' {
+    ::apache::mod { 'cgid':
+      lib_path => '/usr/lib64/apache2-worker',
+    }
+  } else {
+    ::apache::mod { 'cgid': }
+  }
+
   if $cgisock_path {
     # Template uses $cgisock_path
     file { 'cgid.conf':
       ensure  => file,
-      path    => "${::apache::mod_dir}/cgid.conf",
+      path    => "${apache::mod_dir}/cgid.conf",
+      mode    => $apache::file_mode,
       content => template('apache/mod/cgid.conf.erb'),
-      require => Exec["mkdir ${::apache::mod_dir}"],
-      before  => File[$::apache::mod_dir],
+      require => Exec["mkdir ${apache::mod_dir}"],
+      before  => File[$apache::mod_dir],
       notify  => Class['apache::service'],
     }
   }
