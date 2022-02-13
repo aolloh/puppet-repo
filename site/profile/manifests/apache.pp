@@ -1,6 +1,6 @@
 class profile::apache {
   class {'::apache':
-    serveradmin => 'walterheck@olindata.com',
+    serveradmin => 'master1.uni.local',
   }
   apache::vhost { 'vhost.example.com':
   port    => '80',
