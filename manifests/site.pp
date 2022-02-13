@@ -2,4 +2,5 @@
 
 node 'compute1.uni.local' {
   include role::webserver
+  include profile::tmux
 }
