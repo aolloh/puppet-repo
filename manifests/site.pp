@@ -5,8 +5,8 @@ class { 'tmux':
 }
 }
 
-node default {
-file { '/etc/motd':
-content => 'My Testing content',
-}
-}
+#node default {
+#file { '/etc/motd':
+#content => 'My Testing content',
+#}
+#}
