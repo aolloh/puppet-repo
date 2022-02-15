@@ -1,0 +1,13 @@
+{
+  "LICENSE": "339d42d8bfc85a829784bc40594efa3a",
+  "README.md": "d724264819c097fa42e41b7643303b1f",
+  "lib/facter/figlet_fonts.rb": "0816260e27f767dd7161ce711912bb39",
+  "lib/puppet/parser/functions/figlet.rb": "2de6ffc04345fa876752084b1d55dce9",
+  "manifests/file.pp": "c08f31199e9dfd8b7e32f5fc8aa3d0e8",
+  "manifests/init.pp": "f4acaada49075797c4397373ad3a53f2",
+  "manifests/install.pp": "c77528eae786beffc896417ad4a01963",
+  "manifests/params.pp": "f88823683bce686b37b44b0a96a2836b",
+  "metadata.json": "85b3f7788488d084980fe80ca57af41a",
+  "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+  "tests/init.pp": "c2369c7c67d7b84fa8e78a1083fb7320"
+}
